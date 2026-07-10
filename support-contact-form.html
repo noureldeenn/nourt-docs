@@ -52,10 +52,22 @@
         within two business days.
       </p>
 
-      <!-- Replace action with your form backend endpoint. -->
-      <form action="FORM_ENDPOINT" method="post" enctype="multipart/form-data">
+      <!-- FormSubmit.co: free, delivers to the support inbox, sends the
+           customer an auto-response confirmation (Theme Store requirement). -->
+      <form action="https://formsubmit.co/nourbadr4646@gmail.com" method="post" enctype="multipart/form-data">
         <!-- Subject populates the email subject line at the backend. -->
         <input type="hidden" name="_subject" id="emailSubject" value="Nourt support request" />
+        <!-- Auto-responder: confirmation email sent to the submitter. -->
+        <input
+          type="hidden"
+          name="_autoresponse"
+          value="Thanks for contacting Nourt theme support — we've received your request and will reply within two business days. This is an automated confirmation; there's no need to reply to it."
+        />
+        <!-- Nicely formatted notification email + redirect to a thank-you page. -->
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://noureldeenn.github.io/nourt-docs/thank-you.html" />
+        <!-- Honeypot spam trap (FormSubmit ignores real fields named _honey). -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <label for="name">Name <span class="req">*</span></label>
         <input type="text" id="name" name="name" autocomplete="name" required />
