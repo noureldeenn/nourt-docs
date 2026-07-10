@@ -118,10 +118,16 @@ export default {
           `<p>— Nourt Theme Support</p>`,
       });
     } catch (err) {
-      return new Response("We couldn't send your message right now. Please try again shortly.", {
-        status: 502,
-        headers: cors,
-      });
+      // Logged to `wrangler tail` / dashboard logs. Append ?debug=1 to the POST
+      // URL to see the exact provider error in the response body while setting up.
+      console.error("[nourt-support] send failed:", err && err.message);
+      const debug = url.searchParams.get("debug") === "1";
+      return new Response(
+        debug
+          ? `send failed: ${err && err.message}`
+          : "We couldn't send your message right now. Please try again shortly.",
+        { status: 502, headers: cors }
+      );
     }
 
     // Normal full-page form submit -> redirect to the thank-you page.
