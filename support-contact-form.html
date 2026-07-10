@@ -52,21 +52,12 @@
         within two business days.
       </p>
 
-      <!-- FormSubmit.co: free, delivers to the support inbox, sends the
-           customer an auto-response confirmation (Theme Store requirement). -->
-      <form action="https://formsubmit.co/nourbadr4646@gmail.com" method="post" enctype="multipart/form-data">
-        <!-- Subject populates the email subject line at the backend. -->
-        <input type="hidden" name="_subject" id="emailSubject" value="Nourt support request" />
-        <!-- Auto-responder: confirmation email sent to the submitter. -->
-        <input
-          type="hidden"
-          name="_autoresponse"
-          value="Thanks for contacting Nourt theme support — we've received your request and will reply within two business days. This is an automated confirmation; there's no need to reply to it."
-        />
-        <!-- Nicely formatted notification email + redirect to a thank-you page. -->
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://noureldeenn.github.io/nourt-docs/thank-you.html" />
-        <!-- Honeypot spam trap (FormSubmit ignores real fields named _honey). -->
+      <!-- Backend: the Cloudflare Worker in worker/ (emails the submission +
+           auto-responder confirmation, then redirects to thank-you.html).
+           Set action to your deployed Worker URL, e.g.
+           https://nourt-support.<your-subdomain>.workers.dev -->
+      <form action="WORKER_URL" method="post" enctype="multipart/form-data">
+        <!-- Honeypot spam trap (the Worker drops submissions where this is filled). -->
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <label for="name">Name <span class="req">*</span></label>
@@ -85,7 +76,7 @@
         />
 
         <label for="subject">Subject <span class="req">*</span></label>
-        <select id="subject" name="subject" required onchange="syncSubject()">
+        <select id="subject" name="subject" required>
           <option value="" disabled selected>Choose a topic</option>
           <option>How do I… (customization question)</option>
           <option>Something isn't working (bug report)</option>
@@ -107,13 +98,5 @@
         <button type="submit">Send request</button>
       </form>
     </main>
-
-    <script>
-      // Mirror the chosen topic into the email subject line.
-      function syncSubject() {
-        var topic = document.getElementById("subject").value;
-        document.getElementById("emailSubject").value = "Nourt support: " + topic;
-      }
-    </script>
   </body>
 </html>

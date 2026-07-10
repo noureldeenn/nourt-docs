@@ -1,0 +1,15 @@
+name = "nourt-support"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
+
+# Non-secret config. Edit these to taste.
+[vars]
+SUPPORT_EMAIL = "nourbadr4646@gmail.com"
+SENDER_EMAIL  = "nourbadr4646@gmail.com"
+SENDER_NAME   = "Nourt Theme Support"
+THANK_YOU_URL = "https://noureldeenn.github.io/nourt-docs/thank-you.html"
+ALLOWED_ORIGIN = "https://noureldeenn.github.io"
+
+# BREVO_API_KEY is a SECRET — do NOT put it here.
+# Set it once with:  wrangler secret put BREVO_API_KEY
