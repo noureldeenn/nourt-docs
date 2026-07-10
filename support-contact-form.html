@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+  Nourt theme — support contact form.
+  Replace FORM_ENDPOINT (form action) with your backend (Formspree, Basin, Getform…).
+  The backend must accept the submission, notify you, and send the customer an
+  AUTO-RESPONDER confirmation email (required by the Shopify Theme Store).
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nourt theme — Support</title>
+    <meta name="description" content="Contact form for Nourt Shopify theme support — we reply within two business days." />
+    <style>
+      :root { --ink: #1f2937; --muted: #6b7280; --line: #e5e7eb; --brand: #0284c7; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; padding: 2rem 1rem; background: #f9fafb; color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5;
+      }
+      .card {
+        max-width: 640px; margin: 0 auto; background: #fff; border: 1px solid var(--line);
+        border-radius: 16px; padding: 2rem;
+      }
+      .backlink { display: block; max-width: 640px; margin: 0 auto 1rem; }
+      .backlink a { color: var(--muted); text-decoration: none; font-size: .9rem; }
+      .backlink a:hover { color: var(--brand); }
+      h1 { margin: 0 0 .25rem; font-size: 1.5rem; }
+      p.lead { margin: 0 0 1.5rem; color: var(--muted); }
+      label { display: block; font-weight: 600; margin: 1rem 0 .35rem; }
+      .hint { font-weight: 400; color: var(--muted); font-size: .875rem; }
+      input, select, textarea {
+        width: 100%; padding: .65rem .75rem; border: 1px solid var(--line);
+        border-radius: 10px; font: inherit; color: inherit; background: #fff;
+      }
+      input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+      textarea { min-height: 140px; resize: vertical; }
+      button {
+        margin-top: 1.5rem; width: 100%; padding: .8rem 1rem; border: 0; border-radius: 999px;
+        background: var(--ink); color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer;
+      }
+      button:hover { background: #111827; }
+      .req { color: #dc2626; }
+    </style>
+  </head>
+  <body>
+    <p class="backlink"><a href="documentation.html">← Nourt documentation</a></p>
+    <main class="card">
+      <h1>Nourt theme support</h1>
+      <p class="lead">
+        Have a question or found an issue? Send us the details below and we'll reply
+        within two business days.
+      </p>
+
+      <!-- Replace action with your form backend endpoint. -->
+      <form action="FORM_ENDPOINT" method="post" enctype="multipart/form-data">
+        <!-- Subject populates the email subject line at the backend. -->
+        <input type="hidden" name="_subject" id="emailSubject" value="Nourt support request" />
+
+        <label for="name">Name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" required />
+
+        <label for="email">Email address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+
+        <label for="store_url">
+          Store URL <span class="req">*</span>
+          <span class="hint">(for example, https://your-store.myshopify.com)</span>
+        </label>
+        <input
+          type="url" id="store_url" name="store_url"
+          placeholder="https://your-store.myshopify.com" required
+        />
+
+        <label for="subject">Subject <span class="req">*</span></label>
+        <select id="subject" name="subject" required onchange="syncSubject()">
+          <option value="" disabled selected>Choose a topic</option>
+          <option>How do I… (customization question)</option>
+          <option>Something isn't working (bug report)</option>
+          <option>Billing or licensing</option>
+          <option>Other</option>
+        </select>
+
+        <label for="description">Problem description <span class="req">*</span></label>
+        <textarea
+          id="description" name="description" required
+          placeholder="Describe what you expected, what happened, and the steps to reproduce it."
+        ></textarea>
+
+        <label for="attachment">
+          Attachment <span class="hint">(optional — a screenshot helps us help you)</span>
+        </label>
+        <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.txt" />
+
+        <button type="submit">Send request</button>
+      </form>
+    </main>
+
+    <script>
+      // Mirror the chosen topic into the email subject line.
+      function syncSubject() {
+        var topic = document.getElementById("subject").value;
+        document.getElementById("emailSubject").value = "Nourt support: " + topic;
+      }
+    </script>
+  </body>
+</html>

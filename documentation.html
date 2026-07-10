@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nourt theme — Documentation</title>
+    <meta
+      name="description"
+      content="Setup, customization, and feature guide for the Nourt Shopify theme — written for merchants, no coding required."
+    />
+    <style>
+      :root {
+        --ink: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --brand: #0284c7;
+        --bg: #f9fafb;
+        --code-bg: #f3f4f6;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+      }
+      .wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+      header.masthead {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .brand { display: inline-flex; align-items: center; gap: 0.6rem; }
+      .brand .mark {
+        width: 34px; height: 34px; border-radius: 10px; flex: 0 0 auto;
+        background: var(--brand); position: relative;
+      }
+      .brand .mark::after {
+        content: ""; position: absolute; inset: 9px;
+        border-left: 3px solid #fff; border-right: 3px solid #fff;
+        transform: skewX(-18deg);
+      }
+      .brand b { font-size: 1.25rem; letter-spacing: -0.01em; }
+      h1 { font-size: 1.9rem; margin: 1.25rem 0 0.5rem; letter-spacing: -0.02em; }
+      .lead { color: var(--muted); margin: 0.25rem 0 0; font-size: 1.05rem; }
+      h2 {
+        font-size: 1.3rem; margin: 2.5rem 0 0.75rem; padding-top: 0.5rem;
+        letter-spacing: -0.01em;
+      }
+      h3 { font-size: 1.02rem; margin: 1.5rem 0 0.35rem; }
+      p, li { color: #374151; }
+      a { color: var(--brand); text-underline-offset: 2px; }
+      code {
+        background: var(--code-bg); padding: 0.12em 0.4em; border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+        font-size: 0.9em;
+      }
+      ul, ol { padding-left: 1.4rem; }
+      li { margin: 0.3rem 0; }
+      blockquote {
+        margin: 1.25rem 0; padding: 1rem 1.25rem; background: #eff6ff;
+        border-left: 4px solid var(--brand); border-radius: 0 10px 10px 0; color: #1e3a5f;
+      }
+      blockquote p { margin: 0; color: inherit; }
+      .toc {
+        background: #fff; border: 1px solid var(--line); border-radius: 14px;
+        padding: 1.25rem 1.5rem; margin: 2rem 0;
+      }
+      .toc h2 { margin: 0 0 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+      .toc ol { margin: 0; column-count: 2; column-gap: 2rem; }
+      .toc a { text-decoration: none; }
+      .toc a:hover { text-decoration: underline; }
+      .faq-q { font-weight: 600; margin: 1.1rem 0 0.15rem; color: var(--ink); }
+      hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+      footer { color: var(--muted); font-size: 0.9rem; }
+      .cta {
+        display: inline-block; margin-top: 0.5rem; padding: 0.55rem 1.1rem;
+        background: var(--ink); color: #fff; border-radius: 999px; text-decoration: none; font-weight: 600;
+      }
+      .cta:hover { background: #111827; }
+      @media (max-width: 560px) { .toc ol { column-count: 1; } h1 { font-size: 1.6rem; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <span class="brand"><span class="mark" aria-hidden="true"></span><b>Nourt</b></span>
+        <h1>Theme documentation</h1>
+        <p class="lead">
+          Welcome to <strong>Nourt</strong>, a clean, modern Shopify theme. This guide
+          covers setup, customization, and the theme's built-in features. It is written
+          for merchants — no coding required for anything described here.
+        </p>
+      </header>
+
+      <blockquote>
+        <p>
+          <strong>Before you edit theme code:</strong> always <strong>duplicate your
+          theme first</strong> (Online Store → Themes → ⋯ → Duplicate) and edit the copy.
+          Custom code changes are not covered by theme support and can be overwritten by
+          theme updates. Test on the duplicate, then publish once you're happy.
+        </p>
+      </blockquote>
+
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#getting-started">Getting started</a></li>
+          <li><a href="#templates">Home page &amp; templates</a></li>
+          <li><a href="#sections">Sections &amp; blocks</a></li>
+          <li><a href="#theme-settings">Theme settings</a></li>
+          <li><a href="#product">Product pages</a></li>
+          <li><a href="#cart">Cart</a></li>
+          <li><a href="#i18n">Internationalization</a></li>
+          <li><a href="#search">Search</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#support-policy">Support policy</a></li>
+          <li><a href="#contact">Contact &amp; support</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="getting-started">1. Getting started</h2>
+      <ol>
+        <li><strong>Add the theme</strong> to your store and click <strong>Customize</strong> to open the theme editor.</li>
+        <li>Set your <strong>logo</strong> and <strong>favicon</strong>: theme editor → <strong>Header</strong> section (logo) and <strong>Theme settings → Logo</strong> (favicon).</li>
+        <li>Build your <strong>home page</strong> from sections (see §3).</li>
+        <li>Configure <strong>colors and fonts</strong> under <strong>Theme settings</strong> (see §4).</li>
+        <li>Set up your <strong>menus</strong>: Online Store → <strong>Navigation</strong> → <code>main-menu</code> and <code>footer</code>.</li>
+        <li><strong>Preview on mobile and desktop</strong>, then <strong>Publish</strong>.</li>
+      </ol>
+
+      <h2 id="templates">2. Home page &amp; templates</h2>
+      <p>
+        Nourt uses Online Store 2.0 JSON templates, so you can add, remove, and reorder
+        <strong>sections</strong> on every page from the theme editor — home, product,
+        collection, cart, blog, article, search, page, and more.
+      </p>
+      <p>
+        To edit a template: theme editor → template dropdown (top center) → pick the page →
+        add/reorder sections in the left panel.
+      </p>
+
+      <h2 id="sections">3. Sections &amp; blocks</h2>
+      <p>Add a section with <strong>Add section</strong> in the theme editor. Highlights include:</p>
+      <ul>
+        <li><strong>Hero slideshow</strong> — full-width rotating banners (swipeable, autoplay optional).</li>
+        <li><strong>Category circles / mosaic</strong> — shop-by-category navigation.</li>
+        <li><strong>Collection grid / slider / 2-up</strong> — merchandise products and collections.</li>
+        <li><strong>Product features / how it works / stats bar</strong> — storytelling blocks.</li>
+        <li><strong>Bento banner, promo banners, lookbook</strong> — editorial layouts.</li>
+        <li><strong>Testimonials, brand marquee, FAQ accordion</strong> — trust and support.</li>
+        <li><strong>Newsletter, newsletter pop-up</strong> — capture signups.</li>
+        <li><strong>Blog grid / hero / featured</strong> — content marketing.</li>
+        <li><strong>Rich text, page content, contact form</strong> — flexible content pages.</li>
+      </ul>
+      <p>
+        Each section exposes settings (heading, layout, colors, content) in the theme
+        editor. Product and featured-product sections also accept <strong>app blocks</strong>,
+        so you can drop in compatible apps without code.
+      </p>
+
+      <h2 id="theme-settings">4. Theme settings</h2>
+      <p>Open <strong>Theme settings</strong> (gear icon) in the editor:</p>
+      <ul>
+        <li><strong>Logo</strong> — logo image, logo width, favicon, and a text wordmark fallback.</li>
+        <li><strong>Colors</strong> — color schemes with paired background/foreground values. Set at least your primary brand colors; sections can each pick a scheme.</li>
+        <li><strong>Typography</strong> — heading font and body font (from the Shopify font library; the theme defaults to Poppins). Bold and italic variants load automatically.</li>
+        <li><strong>Layout</strong> — container width, spacing, corner radius.</li>
+        <li><strong>Commerce</strong> — free-shipping threshold, low-stock threshold, product rich snippets (SEO), predictive-search popular queries.</li>
+        <li><strong>Social media</strong> — links for the footer/social icons (leave blank to hide).</li>
+      </ul>
+
+      <h2 id="product">5. Product pages</h2>
+      <ul>
+        <li>Media gallery with zoom, video, and 3D model support; variant images swap on selection.</li>
+        <li>Variant picker with color swatches, quantity selector, add-to-cart, and dynamic checkout (Shop Pay) buttons.</li>
+        <li>Shop Pay Installments banner, store <strong>pickup availability</strong>, related and <strong>complementary</strong> product recommendations, and a <strong>Follow on Shop</strong> button.</li>
+        <li>Reviews render from product metafields (<code>custom.rating_avg</code>, <code>custom.rating_count</code>, <code>custom.reviews</code>) — no app required.</li>
+      </ul>
+
+      <h2 id="cart">6. Cart</h2>
+      <ul>
+        <li>Choose a <strong>cart drawer</strong> or cart page experience.</li>
+        <li>Line-item quantity updates, cart notes, discount codes, gift-card codes, free-shipping progress bar, and a tax-inclusive indicator where applicable.</li>
+      </ul>
+
+      <h2 id="i18n">7. Internationalization</h2>
+      <p>
+        Nourt ships with English, French, Arabic (full right-to-left), and Spanish, plus
+        additional locale files. Add a <strong>country/currency</strong> and
+        <strong>language</strong> selector via Shopify Markets; both appear in the
+        header/footer when enabled.
+      </p>
+
+      <h2 id="search">8. Search</h2>
+      <p>
+        Predictive search (products, collections, pages, articles) with a full results
+        page, filters, sorting, and a clear "no results" state.
+      </p>
+
+      <h2 id="faq">9. Frequently asked questions</h2>
+
+      <p class="faq-q">How do I change the logo?</p>
+      <p>Theme editor → <strong>Header</strong> → Logo image, and adjust <strong>Logo width</strong>. Upload a favicon under <strong>Theme settings → Logo</strong>.</p>
+
+      <p class="faq-q">How do I change fonts?</p>
+      <p><strong>Theme settings → Typography</strong> → pick heading and body fonts from the Shopify font library. Bold/italic variants load automatically.</p>
+
+      <p class="faq-q">My menu isn't showing.</p>
+      <p>Menus come from Online Store → <strong>Navigation</strong>. Make sure the Header section's menu is set to <code>main-menu</code> (or your menu) and the footer to <code>footer</code>.</p>
+
+      <p class="faq-q">How do product reviews work?</p>
+      <p>Reviews use product <strong>metafields</strong> (no app needed). Populate <code>custom.rating_avg</code>, <code>custom.rating_count</code>, and <code>custom.reviews</code> on your products.</p>
+
+      <p class="faq-q">How do I show pickup availability?</p>
+      <p>Enable local pickup on your locations in Shopify admin; the product page shows availability automatically for eligible variants.</p>
+
+      <p class="faq-q">Can I use my own font?</p>
+      <p>The theme uses the Shopify font library for performance and reliability. Choose the closest match in <strong>Typography</strong>.</p>
+
+      <p class="faq-q">Something looks broken after I edited the code.</p>
+      <p>Revert to your duplicated backup (Themes → ⋯ → the copy you saved) and re-apply changes carefully. Custom code is outside the scope of theme support.</p>
+
+      <h2 id="support-policy">10. Support policy</h2>
+      <ul>
+        <li>We assist with all theme-related questions and reply within <strong>two business days</strong>.</li>
+        <li>We fix confirmed theme bugs (broken layout, dead links, logic errors) promptly; critical bugs are prioritized.</li>
+        <li>Support covers the theme's built-in features and settings. It does <strong>not</strong> cover custom code, third-party apps, or Shopify platform issues.</li>
+        <li>Contact us through the support form (see §11).</li>
+      </ul>
+
+      <h2 id="contact">11. Contact &amp; support</h2>
+      <p>
+        Use the support contact form linked from the Theme Store listing. Please include
+        your <strong>store URL</strong>, a clear <strong>description</strong>, and
+        screenshots where possible so we can help quickly.
+      </p>
+      <p><a class="cta" href="support-contact-form.html">Open the support form →</a></p>
+
+      <hr />
+      <footer>
+        <p>Documentation version tracks the theme version in <code>config/settings_schema.json</code>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
